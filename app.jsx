@@ -15,7 +15,7 @@ function App() {
   const [languages, setLanguages] = useState([]);
 
   useEffect(() => {
-    fetch("/api/stations")
+    fetch("https://de1.api.radio-browser.info/json/stations")
       .then(res => res.json())
       .then(data => {
         const top = data.slice(0, 150);
@@ -61,7 +61,7 @@ function App() {
   return (
     <div className={`${darkMode ? "bg-gradient-to-br from-gray-900 via-gray-800 to-black" : "bg-gradient-to-br from-indigo-100 via-pink-100 to-white"} min-h-screen flex flex-col items-center p-6 transition-colors duration-500`}>
       
-      {/* Dark Mode Toggle */}
+      {/* Dark Mode Button */}
       <button
         onClick={() => setDarkMode(!darkMode)}
         className="fixed top-4 right-4 bg-white/20 backdrop-blur-lg px-4 py-2 rounded-xl border border-white/30 text-sm shadow-lg hover:scale-105 transition">
@@ -72,7 +72,7 @@ function App() {
         🌍 Worldwide FM Radio
       </h1>
 
-      {/* Search and Filters */}
+      {/* Search + Filters */}
       <div className="w-full max-w-5xl flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0 mb-8">
         <input
           type="text"
@@ -150,6 +150,5 @@ function App() {
   );
 }
 
-// ✅ Mount the app to #root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
