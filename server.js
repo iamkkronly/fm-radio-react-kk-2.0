@@ -10,16 +10,15 @@ const PORT = process.env.PORT || 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Build JSX bundle
+// ✅ Use lowercase filename
 await build({
-  entryPoints: ["./App.jsx"],
+  entryPoints: ["./app.jsx"],
   bundle: true,
   outfile: "bundle.js",
   loader: { ".jsx": "jsx" },
   platform: "browser"
 });
 
-// API route
 app.get("/api/stations", async (req, res) => {
   try {
     const response = await fetch("https://de1.api.radio-browser.info/json/stations");
@@ -30,7 +29,6 @@ app.get("/api/stations", async (req, res) => {
   }
 });
 
-// Serve static files
 app.use(express.static(__dirname));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
