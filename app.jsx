@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom/client";
 
-export default function App() {
+function App() {
   const [stations, setStations] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [current, setCurrent] = useState(null);
@@ -148,3 +149,7 @@ export default function App() {
     </div>
   );
 }
+
+// ✅ Mount the app to #root
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
